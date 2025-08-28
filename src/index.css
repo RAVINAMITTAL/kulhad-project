@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Eco-friendly Kulhad Design System - Earthy & Sustainable Theme */
+
+@layer base {
+  :root {
+    /* Earthy Color Palette */
+    --background: 45 25% 97%;
+    --foreground: 25 40% 15%;
+    
+    /* Kulhad Clay Tones */
+    --clay-terracotta: 16 65% 55%;
+    --clay-brown: 25 50% 35%;
+    --clay-light: 30 40% 85%;
+    --clay-dark: 20 45% 25%;
+    
+    /* Natural Greens */
+    --eco-green: 120 40% 45%;
+    --sage-green: 95 25% 55%;
+    --forest-green: 140 50% 30%;
+    
+    /* Warm Neutrals */
+    --cream: 45 50% 95%;
+    --beige: 40 30% 88%;
+    --earth-dark: 25 60% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Theme Mappings */
+    --primary: var(--clay-terracotta);
+    --primary-foreground: var(--cream);
+
+    --secondary: var(--sage-green);
+    --secondary-foreground: var(--cream);
+
+    --muted: var(--beige);
+    --muted-foreground: var(--clay-brown);
+
+    --accent: var(--eco-green);
+    --accent-foreground: var(--cream);
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: var(--cream);
+
+    --border: var(--clay-light);
+    --input: var(--clay-light);
+    --ring: var(--clay-terracotta);
+    
+    /* Custom Gradients */
+    --gradient-clay: linear-gradient(135deg, hsl(var(--clay-brown)), hsl(var(--clay-terracotta)));
+    --gradient-earth: linear-gradient(180deg, hsl(var(--clay-light)), hsl(var(--beige)));
+    --gradient-eco: linear-gradient(45deg, hsl(var(--eco-green)), hsl(var(--sage-green)));
+    
+    /* Shadows & Effects */
+    --shadow-clay: 0 8px 32px -8px hsl(var(--clay-brown) / 0.3);
+    --shadow-warm: 0 4px 16px -4px hsl(var(--clay-terracotta) / 0.2);
+    
+    /* Custom Properties */
+    --steam-opacity: 0.6;
+    --clay-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='%23D2691E' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v40c11.046 0 20-8.954 20-20z'/%3E%3C/g%3E%3C/svg%3E");
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background-image: var(--clay-texture);
+  }
+}
+
+@layer components {
+  /* Steam Animation */
+  .steam {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .steam::before,
+  .steam::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to top, transparent, rgba(255, 255, 255, var(--steam-opacity)));
+    border-radius: 50%;
+    animation: steam-rise 3s ease-in-out infinite;
+  }
+  
+  .steam::before {
+    width: 8px;
+    height: 30px;
+    left: 45%;
+    animation-delay: 0s;
+  }
+  
+  .steam::after {
+    width: 6px;
+    height: 25px;
+    left: 55%;
+    animation-delay: 1s;
+  }
+  
+  /* Clay Texture Effect */
+  .clay-texture {
+    background-image: var(--clay-texture);
+    background-size: 40px 40px;
+  }
+  
+  /* Floating Animation */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Pulse Glow Effect */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
+  /* Kulhad Hover Effect */
+  .kulhad-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .kulhad-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    filter: drop-shadow(var(--shadow-clay));
+  }
+}
+
+@layer utilities {
+  /* Custom Gradients */
+  .bg-gradient-clay {
+    background: var(--gradient-clay);
+  }
+  
+  .bg-gradient-earth {
+    background: var(--gradient-earth);
+  }
+  
+  .bg-gradient-eco {
+    background: var(--gradient-eco);
+  }
+  
+  /* Custom Shadows */
+  .shadow-clay {
+    box-shadow: var(--shadow-clay);
+  }
+  
+  .shadow-warm {
+    box-shadow: var(--shadow-warm);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes steam-rise {
+  0% {
+    opacity: var(--steam-opacity);
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: calc(var(--steam-opacity) * 0.7);
+    transform: translateY(-20px) rotate(5deg) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-40px) rotate(10deg) scale(1.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 20px hsl(var(--clay-terracotta) / 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px hsl(var(--clay-terracotta) / 0.6);
+  }
+}

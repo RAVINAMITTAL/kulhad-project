@@ -1,2 +1,1 @@
-# kulhad-project
-It's a khulad ecofriendly .
+This is a project on suistanable development.
